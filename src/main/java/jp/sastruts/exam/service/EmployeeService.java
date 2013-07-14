@@ -1,6 +1,6 @@
 package jp.sastruts.exam.service;
 
-import java.util.Random;
+import java.util.List;
 
 import jp.sastruts.exam.entity.Employee;
 import jp.sastruts.exam.exception.ApplicationRuntimeException;
@@ -8,6 +8,8 @@ import jp.sastruts.exam.service.dto.EmployeeBizDto;
 import jp.sastruts.exam.util.DateUtils;
 
 import org.seasar.extension.jdbc.service.S2AbstractService;
+import org.seasar.extension.jdbc.where.SimpleWhere;
+import org.seasar.struts.annotation.Execute;
 
 /**
  * Employeeテーブルと対応するServiceクラスです。
@@ -15,6 +17,15 @@ import org.seasar.extension.jdbc.service.S2AbstractService;
  *
  */
 public class EmployeeService extends S2AbstractService<Employee>{
+	
+	/**
+	 * 現在所属する社員の一覧取得。
+	 * @return
+	 */
+	@Execute
+	public List<Employee> findAllEffectiveEmployees() {
+		return select().where(new SimpleWhere().isNull("retireday", Boolean.TRUE)).getResultList();
+	}
 
 	/**
 	 * 入社する。
@@ -23,7 +34,8 @@ public class EmployeeService extends S2AbstractService<Employee>{
 	 */
 	public Employee join(EmployeeBizDto dto) {
 		Employee employee = new Employee();
-		employee.employeeNo = String.valueOf(new Random().nextInt(10000));
+		employee.employeeNo = dto.employeeNo;
+		employee.employeeName = dto.employeeName;
 		employee.entranceDay = DateUtils.getCurrentSqlDate();
 		int insertCount = insert(employee);
 		
@@ -41,8 +53,11 @@ public class EmployeeService extends S2AbstractService<Employee>{
 	 */
 	public Employee retire(EmployeeBizDto dto) {
 		Employee retireEmp = select().where("EMPLOYEENO = ?", dto.employeeNo).getSingleResult();
+		if (retireEmp == null) {
+			throw new ApplicationRuntimeException("MSG");
+		}
 		retireEmp.retireDay = DateUtils.getCurrentSqlDate();
-		int deleteCount = delete(retireEmp);
+		int deleteCount = update(retireEmp);
 		if (deleteCount != 1) {
 			throw new ApplicationRuntimeException("MSG01");
 		}

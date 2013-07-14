@@ -21,8 +21,6 @@ public class Employee {
 	
 	/** 主キー */
 	@Id
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="employee_gen")
-//	@SequenceGenerator(name="employee_gen", sequenceName="employee_seq")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	public Long id;

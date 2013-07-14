@@ -1,5 +1,7 @@
 package jp.sastruts.exam.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import jp.sastruts.exam.entity.Employee;
@@ -19,8 +21,11 @@ public class EmployeeAction {
 	@Resource
 	public EmployeeForm employeeForm;
 	
+	public List<Employee> employees;
+	
 	@Execute(input="employee.jsp")
 	public String index() {
+		employees = employeeService.findAllEffectiveEmployees();
 		return "employee.jsp";
 	}
 	
@@ -30,9 +35,19 @@ public class EmployeeAction {
 		bizDto.employeeNo = employeeForm.employeeNo;
 		bizDto.employeeName = employeeForm.employeeName;
 		
-		Employee emp = employeeService.join(bizDto);
+		employeeService.join(bizDto);
 		
-		return "employee.jsp";
+		return "/employee";
+	}
+	
+	@Execute(input="employee.jsp")
+	public String retire() {
+		EmployeeBizDto bizDto = new EmployeeBizDto();
+		bizDto.employeeNo = employeeForm.employeeNo;
+		
+		employeeService.retire(bizDto);
+		
+		return "/employee";
 	}
 	
 }
