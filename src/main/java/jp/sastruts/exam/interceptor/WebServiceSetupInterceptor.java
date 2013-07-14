@@ -1,8 +1,7 @@
 package jp.sastruts.exam.interceptor;
 
-import java.io.BufferedReader;
-
 import javax.annotation.Resource;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import jp.sastruts.exam.dto.ServiceXmlStoreBean;
@@ -26,8 +25,7 @@ public class WebServiceSetupInterceptor extends AbstractInterceptor {
 	 */
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		HttpServletRequest request = RequestUtil.getRequest();
-		BufferedReader reader = request.getInputStream();
-		reader.read
+		ServletInputStream stream = request.getInputStream();
 		return null;
 	}
 
