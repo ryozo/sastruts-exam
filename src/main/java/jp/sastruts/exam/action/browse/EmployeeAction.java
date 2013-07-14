@@ -1,4 +1,4 @@
-package jp.sastruts.exam.action;
+package jp.sastruts.exam.action.browse;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class EmployeeAction {
 	
 	public List<Employee> employees;
 	
-	@Execute(input="employee.jsp")
+	@Execute(validator=false)
 	public String index() {
 		employees = employeeService.findAllEffectiveEmployees();
 		return "employee.jsp";
@@ -37,7 +37,7 @@ public class EmployeeAction {
 		
 		employeeService.join(bizDto);
 		
-		return "/employee";
+		return "/browse/employee";
 	}
 	
 	@Execute(input="employee.jsp")
@@ -47,7 +47,7 @@ public class EmployeeAction {
 		
 		employeeService.retire(bizDto);
 		
-		return "/employee";
+		return "/browse/employee";
 	}
 	
 }

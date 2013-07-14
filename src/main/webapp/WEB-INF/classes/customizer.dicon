@@ -12,6 +12,52 @@
         <initMethod name="addAspectCustomizer">
             <arg>"actionMessagesThrowsInterceptor"</arg>
         </initMethod>
+
+        <!-- Webサービス関連初期処理を行うインターセプタ -->
+        <initMethod name="addCustomizer">
+          <arg>
+            <component class="org.seasar.framework.container.customizer.AspectCustomizer">
+              <property name="interceptorName">"webServiceSetupInterceptor"</property>
+            <property name="useLookupAdapter">true</property>
+              <!-- Webサービス関連のリクエストのみを対象とする -->
+              <initMethod name="addClassPattern">
+                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>".*"</arg>
+              </initMethod>
+            </component>
+          </arg>
+        </initMethod>
+
+        <!-- アプリケーションログ取得用のインターセプタ -->
+        <initMethod name="addCustomizer">
+          <arg>
+            <component class="org.seasar.framework.container.customizer.AspectCustomizer">
+              <property name="interceptorName">"applicationLogInterceptor"</property>
+              <!-- Webサービス関連のリクエストは対象外 -->
+              <initMethod name="addIgnoreClassPattern">
+                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>".*"</arg>
+              </initMethod>
+            </component>
+          </arg>
+        </initMethod>
+
+        <!-- Webサービス関連のログ取得用インターセプタ -->
+        <initMethod name="addCustomizer">
+          <arg>
+            <component class="org.seasar.framework.container.customizer.AspectCustomizer">
+              <property name="interceptorName">"webServiceLogInterceptor"</property>
+              <!-- Webサービス関連のリクエストのみを対象とする -->
+              <initMethod name="addClassPattern">
+                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>".*"</arg>
+              </initMethod>
+            </component>
+          </arg>
+        </initMethod>
+        
+        <!-- XML通信の解析 -->
+        
         <initMethod name="addCustomizer">
             <arg>
                 <component
