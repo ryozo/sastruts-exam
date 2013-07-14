@@ -1,4 +1,6 @@
-package jp.sastruts.exam.action;
+package jp.sastruts.exam.action.browse;
+
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -19,8 +21,11 @@ public class EmployeeAction {
 	@Resource
 	public EmployeeForm employeeForm;
 	
-	@Execute(input="employee.jsp")
+	public List<Employee> employees;
+	
+	@Execute(validator=false)
 	public String index() {
+		employees = employeeService.findAllEffectiveEmployees();
 		return "employee.jsp";
 	}
 	
@@ -30,9 +35,19 @@ public class EmployeeAction {
 		bizDto.employeeNo = employeeForm.employeeNo;
 		bizDto.employeeName = employeeForm.employeeName;
 		
-		Employee emp = employeeService.join(bizDto);
+		employeeService.join(bizDto);
 		
-		return "employee.jsp";
+		return "/browse/employee";
+	}
+	
+	@Execute(input="employee.jsp")
+	public String retire() {
+		EmployeeBizDto bizDto = new EmployeeBizDto();
+		bizDto.employeeNo = employeeForm.employeeNo;
+		
+		employeeService.retire(bizDto);
+		
+		return "/browse/employee";
 	}
 	
 }

@@ -8,4 +8,7 @@
 	<include path="s2jdbc.dicon"/>
 	
 	<component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
+	<component name="webServiceSetupInterceptor" class="jp.sastruts.exam.interceptor.WebServiceSetupInterceptor" />
+	<component name="applicationLogInterceptor" class="jp.sastruts.exam.interceptor.ApplicationLogInterceptor" />
+	<component name="webServiceLogInterceptor" class="jp.sastruts.exam.interceptor.WebServiceLogInterceptor" />
 </components>

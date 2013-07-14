@@ -1,4 +1,4 @@
-package jp.sastruts.exam.action;
+package jp.sastruts.exam.action.browse;
 
 import org.seasar.struts.annotation.Execute;
 
