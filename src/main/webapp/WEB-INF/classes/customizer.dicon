@@ -47,6 +47,7 @@
           <arg>
             <component class="org.seasar.framework.container.customizer.AspectCustomizer">
               <property name="interceptorName">"webServiceLogInterceptor"</property>
+              <property name="useLookupAdapter">true</property>
               <!-- Webサービス関連のリクエストのみを対象とする -->
               <initMethod name="addClassPattern">
                 <arg>"jp.sastruts.exam.action.webservice"</arg>
@@ -56,7 +57,20 @@
           </arg>
         </initMethod>
         
-        <!-- XML通信の解析 -->
+        <!-- XMLのマーシャル・アンマーシャルを行うインターセプタ-->
+        <initMethod name="addCustomizer">
+          <arg>
+            <component class="org.seasar.framework.container.customizer.AspectCustomizer">
+              <property name="interceptorName">"xmlAnalysysInterceptor"</property>
+              <property name="useLookupAdapter">true</property>
+              <!-- Webサービス関連のリクエストのみを対象とする -->
+              <initMethod name="addClassPattern">
+                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>".*"</arg>
+              </initMethod>
+            </component>
+          </arg>
+        </initMethod>
         
         <initMethod name="addCustomizer">
             <arg>

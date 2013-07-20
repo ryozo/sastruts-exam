@@ -12,6 +12,11 @@ import jp.sastruts.exam.service.dto.EmployeeBizDto;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
+/**
+ * 社員関連の処理を行うActionクラスです。
+ * @author W.Ryozo
+ *
+ */
 public class EmployeeAction {
 
 	@Resource

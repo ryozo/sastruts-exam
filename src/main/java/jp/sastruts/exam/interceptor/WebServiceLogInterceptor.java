@@ -1,5 +1,9 @@
 package jp.sastruts.exam.interceptor;
 
+import javax.annotation.Resource;
+
+import jp.sastruts.exam.dto.ServiceXmlStoreDto;
+import jp.sastruts.exam.exception.ApplicationRuntimeException;
 import jp.sastruts.exam.service.dto.LogInfo;
 
 /**
@@ -9,9 +13,19 @@ import jp.sastruts.exam.service.dto.LogInfo;
  */
 public class WebServiceLogInterceptor extends LogInterceptorBase {
 
+	@Resource
+	public ServiceXmlStoreDto serviceXmlStoreDto;
+	
 	@Override
 	protected LogInfo preLog(LogInfo logInfo) {
-		logInfo.preInfo = "servicecall";
+		String xmlString = null;
+		try {
+			// TODO　文字コードの考慮
+			xmlString = new String(serviceXmlStoreDto.xml, "UTF-8");
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		logInfo.preInfo = xmlString;
 		return logInfo;
 	}	
 	
