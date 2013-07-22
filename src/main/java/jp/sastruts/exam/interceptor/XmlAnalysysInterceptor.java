@@ -2,11 +2,11 @@ package jp.sastruts.exam.interceptor;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.stream.XMLInputFactory;
@@ -57,12 +57,13 @@ public class XmlAnalysysInterceptor extends AbstractInterceptor {
 		}
 	}
 	
-	private void unmarshal() {
+	private void unmarshal() throws JAXBException {
 		
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 		Unmarshaller unmarshaller = jaxbContextWrapper.getUnmarshaller();
 
 		// TODO XMLEventReaderへの変更
+		// TODO XPathは使えないのか？
 		XMLStreamReader reader = null;
 		BufferedInputStream stream = null;
 
@@ -124,7 +125,7 @@ public class XmlAnalysysInterceptor extends AbstractInterceptor {
 	 */
 	public boolean isTargetPoint(XMLStreamReader reader) throws Exception{
 		// TODO　このメソッドを使ってもっと汎用的にする。
-		List<Class<?>> targetElementArray = jaxbContextWrapper.getTargetElementList();
+		List<Class<?>> targetElementArray = jaxbContextWrapper.getSupportElementList();
 		for (Class<?> clazz : targetElementArray) {
 			XmlRootElement rootElm = clazz.getAnnotation(XmlRootElement.class);
 			if (rootElm.name().equals(reader.getLocalName()));
@@ -141,7 +142,7 @@ public class XmlAnalysysInterceptor extends AbstractInterceptor {
 	 * @throws Exception
 	 */
 	public boolean isCommonTag(XMLStreamReader reader) throws Exception {
-		List<Class<?>> targetElementArray = jaxbContextWrapper.getTargetElementList();
+		List<Class<?>> targetElementArray = jaxbContextWrapper.getSupportElementList();
 		for (Class<?> clazz : targetElementArray) {
 			AppXml appXml = clazz.getAnnotation(AppXml.class);
 			if (AppXmlType.COMMON.equals(appXml.type())) {
@@ -161,7 +162,7 @@ public class XmlAnalysysInterceptor extends AbstractInterceptor {
 	 * @throws Exception
 	 */
 	public boolean isBusinessTag(XMLStreamReader reader) throws Exception {
-		List<Class<?>> targetElementArray = jaxbContextWrapper.getTargetElementList();
+		List<Class<?>> targetElementArray = jaxbContextWrapper.getSupportElementList();
 		for (Class<?> clazz : targetElementArray) {
 			AppXml appXml = clazz.getAnnotation(AppXml.class);
 			if (AppXmlType.BUSINESS.equals(appXml.type())) {
