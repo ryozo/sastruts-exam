@@ -14,12 +14,15 @@
 	<component name="xmlAnalysysInterceptor" class="jp.sastruts.exam.interceptor.XmlAnalysysInterceptor" />
 	
 	<!-- マーシャル・アンマーシャルクラスの管理用オブジェクト -->
-	<component name="jaxbContextWrapper" class="jp.sastruts.exam.jaxb.JaxbContextWrapper" instance="singleton">
+	<component name="jaxbContextWrapper" class="sastruts.exam.jaxb.JaxbContextWrapper" instance="singleton">
 	  <initMethod name="init">
 	    <arg>"jaxb.index"</arg>
 	  </initMethod>
 	</component>
 	
 	<!-- タグ情報を保持するオブジェクト -->
-	<component name="rootTag" class="jp.sastruts.exam.element.com.RootTag" instance="session" />
+	<component name="rootTag" class="sastruts.exam.element.com.RootTag" instance="session" />
+	
+	<!-- XML情報を保持するBean -->
+	<component name="serviceXmlStoreBean" class="sastruts.exam.bean.ServiceXmlStoreBean" instance="session" />
 </components>

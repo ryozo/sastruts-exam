@@ -21,7 +21,7 @@
             <property name="useLookupAdapter">true</property>
               <!-- Webサービス関連のリクエストのみを対象とする -->
               <initMethod name="addClassPattern">
-                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>"sastruts.exam.action.webservice"</arg>
                 <arg>".*"</arg>
               </initMethod>
             </component>
@@ -35,7 +35,7 @@
               <property name="interceptorName">"applicationLogInterceptor"</property>
               <!-- Webサービス関連のリクエストは対象外 -->
               <initMethod name="addIgnoreClassPattern">
-                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>"sastruts.exam.action.webservice"</arg>
                 <arg>".*"</arg>
               </initMethod>
             </component>
@@ -50,7 +50,7 @@
               <property name="useLookupAdapter">true</property>
               <!-- Webサービス関連のリクエストのみを対象とする -->
               <initMethod name="addClassPattern">
-                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>"sastruts.exam.action.webservice"</arg>
                 <arg>".*"</arg>
               </initMethod>
             </component>
@@ -65,7 +65,7 @@
               <property name="useLookupAdapter">true</property>
               <!-- Webサービス関連のリクエストのみを対象とする -->
               <initMethod name="addClassPattern">
-                <arg>"jp.sastruts.exam.action.webservice"</arg>
+                <arg>"sastruts.exam.action.webservice"</arg>
                 <arg>".*"</arg>
               </initMethod>
             </component>
