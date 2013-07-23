@@ -8,10 +8,11 @@
 	<include path="s2jdbc.dicon"/>
 	
 	<component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
-	<component name="webServiceSetupInterceptor" class="jp.sastruts.exam.interceptor.WebServiceSetupInterceptor" />
-	<component name="applicationLogInterceptor" class="jp.sastruts.exam.interceptor.ApplicationLogInterceptor" />
-	<component name="webServiceLogInterceptor" class="jp.sastruts.exam.interceptor.WebServiceLogInterceptor" />
-	<component name="xmlAnalysysInterceptor" class="jp.sastruts.exam.interceptor.XmlAnalysysInterceptor" />
+	<component name="webServiceSessionInvalidMarkInterceptor" class="sastruts.exam.interceptor.WebServiceSessionInvalidMarkInterceptor" />
+	<component name="webServiceRequestAcquisitionInterceptor" class="sastruts.exam.interceptor.WebServiceRequestAcquisitionInterceptor" />
+	<component name="applicationLogInterceptor" class="sastruts.exam.interceptor.ApplicationLogInterceptor" />
+	<component name="webServiceLogInterceptor" class="sastruts.exam.interceptor.WebServiceLogInterceptor" />
+	<component name="xmlAnalysysInterceptor" class="sastruts.exam.interceptor.XmlAnalysysInterceptor" />
 	
 	<!-- マーシャル・アンマーシャルクラスの管理用オブジェクト -->
 	<component name="jaxbContextWrapper" class="sastruts.exam.jaxb.JaxbContextWrapper" instance="singleton">
@@ -22,7 +23,4 @@
 	
 	<!-- タグ情報を保持するオブジェクト -->
 	<component name="rootTag" class="sastruts.exam.element.com.RootTag" instance="session" />
-	
-	<!-- XML情報を保持するBean -->
-	<component name="serviceXmlStoreBean" class="sastruts.exam.bean.ServiceXmlStoreBean" instance="session" />
 </components>

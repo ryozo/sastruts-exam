@@ -12,13 +12,29 @@
         <initMethod name="addAspectCustomizer">
             <arg>"actionMessagesThrowsInterceptor"</arg>
         </initMethod>
+        
+        <!-- Webサービスの通信終了時、HttpSessionを廃棄するためのマークを設定するインターセプタ -->
+        <initMethod name="addCustomizer">
+          <arg>
+            <component class="org.seasar.framework.container.customizer.AspectCustomizer">
+              <property name="interceptorName">"webServiceSessionInvalidMarkInterceptor"</property>
+              <property name="useLookupAdapter">true</property>
+              <!-- Webサービス関連のリクエストのみを対象とする -->
+              <initMethod name="addClassPattern">
+                <arg>"sastruts.exam.action.webservice"</arg>
+                <arg>".*"</arg>
+              </initMethod>
+            </component>
+          </arg>
+        </initMethod>
+
 
         <!-- Webサービス関連初期処理を行うインターセプタ -->
         <initMethod name="addCustomizer">
           <arg>
             <component class="org.seasar.framework.container.customizer.AspectCustomizer">
-              <property name="interceptorName">"webServiceSetupInterceptor"</property>
-            <property name="useLookupAdapter">true</property>
+              <property name="interceptorName">"webServiceRequestAcquisitionInterceptor"</property>
+              <property name="useLookupAdapter">true</property>
               <!-- Webサービス関連のリクエストのみを対象とする -->
               <initMethod name="addClassPattern">
                 <arg>"sastruts.exam.action.webservice"</arg>

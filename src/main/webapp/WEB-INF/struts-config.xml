@@ -18,7 +18,7 @@
       <exception type="java.lang.Throwable"
                          key="error"
                          path="/error.jsp"
-                         handler="jp.sastruts.exam.exception.handler.BaseExceptionHandler" />
+                         handler="sastruts.exam.exception.handler.BaseExceptionHandler" />
     </global-exceptions>
 
 <!-- =================================== Global Forward Definitions -->

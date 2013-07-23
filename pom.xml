@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>jp.sastruts.exam</groupId>
+  <groupId>sastruts.exam</groupId>
   <artifactId>SAStruts-exam</artifactId>
   <version>0.00.01</version>
   <packaging>war</packaging>
