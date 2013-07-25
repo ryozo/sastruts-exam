@@ -11,6 +11,7 @@ public abstract class AbstractBizTag extends Tag {
 	/** SerialVersionUID */
 	public static final long serialVersionUID = 1L;
 
+	
 	/** 業務での処理結果メッセージ */
 	public String messageKey;
 

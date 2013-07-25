@@ -23,6 +23,7 @@ public class TestServiceAction {
 	
 	@Execute(validator=false)
 	public String call() {
+	    System.out.println(rootTag.getClass().getClassLoader().getClass());
 		HttpServletResponse res = ResponseUtil.getResponse();
 		res.setContentType("application/xml");
 		PrintWriter writer = null;

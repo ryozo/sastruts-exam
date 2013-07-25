@@ -22,5 +22,5 @@
 	</component>
 	
 	<!-- タグ情報を保持するオブジェクト -->
-	<component name="rootTag" class="sastruts.exam.element.com.RootTag" instance="session" />
+	<component name="rootTag" class="sastruts.exam.element.com.RootTag" instance="prototype"/>
 </components>

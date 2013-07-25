@@ -2,8 +2,6 @@ package sastruts.exam.element.com;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.seasar.framework.container.annotation.tiger.Component;
-import org.seasar.framework.container.annotation.tiger.InstanceType;
 
 /**
  * ルートタグを表すクラスです。<br />
@@ -16,7 +14,6 @@ import org.seasar.framework.container.annotation.tiger.InstanceType;
  * @author W.Ryozo
  *
  */
-@Component(instance=InstanceType.SESSION)
 public class RootTag extends Tag {
 
 	/** SerialVersionUID */

@@ -3,7 +3,6 @@ package sastruts.exam.interceptor;
 import javax.annotation.Resource;
 
 import sastruts.exam.dto.ServiceXmlStoreDto;
-import sastruts.exam.exception.ApplicationRuntimeException;
 import sastruts.exam.service.dto.LogInfo;
 
 /**

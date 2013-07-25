@@ -20,7 +20,7 @@ import org.seasar.framework.container.annotation.tiger.InstanceType;
 import org.seasar.framework.util.ResourceUtil;
 
 import sastruts.exam.annotation.AppXml;
-import sastruts.exam.exception.SystemRuntimeException;
+import sastruts.exam.exception.browse.SystemRuntimeException;
 
 /**
  * JAXBコンテキストを管理するオブジェクトです。

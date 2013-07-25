@@ -12,7 +12,7 @@ import org.seasar.framework.aop.interceptors.AbstractInterceptor;
 import org.seasar.struts.util.RequestUtil;
 
 import sastruts.exam.dto.ServiceXmlStoreDto;
-import sastruts.exam.exception.SystemRuntimeException;
+import sastruts.exam.exception.browse.SystemRuntimeException;
 
 /**
  * Webサービスとして利用された場合に、HTTPBodyの読み込みを行うインターセプタです。

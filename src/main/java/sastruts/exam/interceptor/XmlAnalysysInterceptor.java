@@ -49,6 +49,7 @@ public class XmlAnalysysInterceptor extends AbstractInterceptor {
 	 * StAXとJAXBを利用し、XMLを解析します。
 	 */
 	public Object invoke(MethodInvocation invocation) throws Throwable {
+	    System.out.println(rootTag.getClass().getClassLoader().getClass());
 		unmarshal();
 		try {
 			return invocation.proceed();

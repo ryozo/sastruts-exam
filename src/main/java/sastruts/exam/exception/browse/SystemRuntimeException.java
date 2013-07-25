@@ -1,9 +1,9 @@
-package sastruts.exam.exception;
+package sastruts.exam.exception.browse;
 
 /**
- * 再起不能なエラーが発生した場合にThrowされるException
+ * ブラウザベースの業務アプリケーションで再起不能な例外が発生したことを表すRuntimExceptionです。
  * @author W.Ryozo
- * @version 1.0
+ * @version 1.0 新規作成
  */
 public class SystemRuntimeException extends RuntimeException {
 	

@@ -7,7 +7,7 @@ import org.seasar.extension.jdbc.where.SimpleWhere;
 import org.seasar.struts.annotation.Execute;
 
 import sastruts.exam.entity.Employee;
-import sastruts.exam.exception.ApplicationRuntimeException;
+import sastruts.exam.exception.browse.ApplicationRuntimeException;
 import sastruts.exam.service.dto.EmployeeBizDto;
 import sastruts.exam.util.DateUtils;
 

@@ -1,9 +1,10 @@
-package sastruts.exam.exception;
+package sastruts.exam.exception.browse;
 
 /**
- * 業務的な例外が発生したことを表すRuntimExceptionです。
+ * ブラウザベースの業務アプリケーションで業務的な例外が発生したことを表すRuntimExceptionです。<br />
+ * 業務継続可能な例外が発生した場合に当Exceptionをthrowしてください。
  * @author W.Ryozo
- *
+ * @version 1.0 新規作成
  */
 public class ApplicationRuntimeException extends RuntimeException {
 	
