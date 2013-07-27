@@ -22,5 +22,7 @@
 	</component>
 	
 	<!-- タグ情報を保持するオブジェクト -->
-	<component name="rootTag" class="sastruts.exam.element.com.RootTag" instance="prototype"/>
+	<component name="serviceRequestResponseElementDto" class="sastruts.exam.dto.ServiceRequestResponseElementDto" instance="session" />
+	<!-- HTTPRequest/Response情報を保持するオブジェクト -->
+	<component name="serviceXmlStoreDto" class="sastruts.exam.dto.ServiceXmlStoreDto" instance="session" />
 </components>

@@ -1,16 +1,17 @@
 package sastruts.exam.dto;
 
-import org.seasar.framework.container.annotation.tiger.Component;
-import org.seasar.framework.container.annotation.tiger.InstanceType;
-
 /**
- * Webサービスで利用するXml情報を保持するDtoです。
+ * Webサービスで利用するXml情報を保持するDtoです。<br />
+ * 当クラスはよりHTTPに近い形式でRequest、Response情報を保持します。
  * @author W.Ryozo
- *
+ * @version 1.0
  */
-@Component(instance=InstanceType.SESSION)
 public class ServiceXmlStoreDto {
 	
-	public byte[] xml;
+    /** RequestのBODY部分です。 */
+	public byte[] requestBodyBytes;
+	
+	/** ResponseのBODY部分です */
+	public String responseBody;
 
 }
